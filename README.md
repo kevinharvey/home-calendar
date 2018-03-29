@@ -1,2 +1,2 @@
-# home-calendary
-The Harveys home calendar
+# home-calendar
+The Harveys' home calendar
