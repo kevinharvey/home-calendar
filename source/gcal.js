@@ -1,12 +1,15 @@
 import request from 'superagent'
 
-const CALENDAR_ID = ''
-const API_KEY = ''
-let url = ''
+let api_url = ''
 
-export function getEvents (callback) {
+export function getEvents (date, callback) {
+  var y = date.getFullYear(), m = date.getMonth()
+  var start = new Date(y, m, -6).toISOString()
+  var end = new Date(y, m + 1, 7).toISOString()
+  var query_url = `${api_url}?start=${start}&end=${end}`
+
   request
-    .get(url)
+    .get(query_url)
     .end((err, resp) => {
       if (!err) {
         const events = []

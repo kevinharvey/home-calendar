@@ -12,22 +12,31 @@ require('style-loader!css-loader!react-big-calendar/lib/css/react-big-calendar.c
 class App extends React.Component {
   constructor () {
     super()
+
     this.state = {
-      events: []
+      events: [],
+      viewDate: new Date()
     }
   }
 
-  componentDidMount () {
-    getEvents((events) => {
+  updateEvents (currentDate) {
+    getEvents(currentDate, (events) => {
       this.setState({events})
     })
+  }
+
+  componentDidMount () {
+    this.updateEvents(this.state.viewDate)
   }
 
   render () {
     return (
       <BigCalendar
-        style={{height: '420px'}}
+        defaultDate={this.state.viewDate}
         events={this.state.events}
+        views={['month']}
+        style={{height: '420px'}}
+        onNavigate={(currentDate, viewName, actionName) => {this.updateEvents(currentDate)}}
       />
     )
   }
