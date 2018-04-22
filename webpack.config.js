@@ -1,7 +1,12 @@
 module.exports = {
-  entry:  './source/app.js',
+  entry: './source/app.js',
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: '.',
+  },
   output: {
-    filename: './bundle.js'
+    filename: './bundle.js',
+    path: path.resolve(__dirname, 'dist')
   },
   module: {
     rules: [
