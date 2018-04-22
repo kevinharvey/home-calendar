@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   entry: './source/app.js',
   devtool: 'inline-source-map',
